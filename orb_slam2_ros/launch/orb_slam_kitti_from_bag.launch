@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+
+<!-- setup arguments -->
+<!-- rosbag arguments -->
+<arg name="bag_data_path"                    default="$(env HOME)/datasets/KITTI/kitti_2011_09_30_drive_0027_synced.bag"/>
+
+<!-- ORBSLAM arguments -->
+<arg name="octomap_enabled"         		default="false"/>
+
+<!-- feature visualizer arguments -->
+<arg name="visualize_orb_features"          default="false"/>
+
+
+<!-- rosbag replay-->
+<param name="use_sim_time" value="true"/>
+<node pkg="rosbag" type="play" name="player" output="screen" args="$(arg bag_data_path) --clock --pause -r 1">
+  <remap from="kitti/camera_gray_left/image_raw" to="left/image_rect_color"/>
+  <remap from="kitti/camera_gray_right/image_raw" to="right/image_rect_color"/>
+</node>
+
+<!-- ORBSLAM2 launch -->
+<include file="$(find orb_slam2_ros)/launch/orb_slam_kitti.launch">
+  <arg name="octomap_enabled"   value="false"/>
+</include>
+
+<!-- rqt_image_view for visualization of extracted ORB featues in camera frame -->
+<node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view" args="image:=/orb_slam2/frame" if="$(arg visualize_orb_features)"/>
+
+</launch>

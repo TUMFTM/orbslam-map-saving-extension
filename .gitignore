@@ -1,0 +1,43 @@
+# Prerequisites
+*.d
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+# Precompiled Headers
+*.gch
+*.pch
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+# Fortran module files
+*.mod
+*.smod
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+# Executables
+*.exe
+*.out
+*.app
+# Simulink code generation folders
+slprj/
+sccprj/
+# Simulink autosave extension
+*.autosave
+# Windows default autosave extension
+*.asv
+# build folder for automated making and testing
+/build/*
+!/build/Readme.md
+*cmake-build-debug
+*.idea
+# ROS stuff
+*.bag
+#Saved maps or Binary vocabulary
+.bin
+
