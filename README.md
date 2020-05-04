@@ -142,14 +142,17 @@ To visualize the trajectories of the SLAM and localization runs, a basic plottin
 ```
 python example_trajectory_plots.py
 ```
-The ouput should be as follows: 
+The ouput should be as follows:
+
 ![SLAM and Localization Trajectories](doc/loc_result.png)
+
 We see that the localization visually matches with the mapping trajectory even at higher speeds. Note: If you run the example bag with 2x speed in SLAM mode, the mapping process will eventually fail due to failed feature matching.
 
 #### Feature Visualization
 During the SLAM or localization process you can visualize the matching  of the ORB features. Therefore start `rqt_image_view` and listen to the
 `/orb_slam2/frame` topic. An example frame output for the localization mode is shown here: 
-![ORB matching visualization](doc/localization_mode.png){:height="70%" width="70%"}
+
+![ORB matching visualization](doc/localization_mode.png)
 
 ## Additional information
 
